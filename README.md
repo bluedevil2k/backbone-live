@@ -1,6 +1,10 @@
 backbone-live
 =============
 
+*CabForward*
+Austin's Leading Ruby on Rails Shop
+www.cabforward.com
+
 Backbone Live Models and Collections
 
 These two Backbone extensions aim to make working with Pusher even easier.  It keeps your Models and Collections
@@ -13,15 +17,12 @@ Example
 
 	// simply extend the LiveCollection object instead of the standard Backbone Collection
 	MessageList = Backbone.LiveCollection.extend({
-
 		model : Message,
 		url : "/messages"
-
 	});
 
 	// or if you just have a Model, extend LiveModel
 	Message = Backbone.LiveModel.extend({
-
 		urlRoot : "/messages"
 	});
 
