@@ -1,9 +1,10 @@
 backbone-live
 =============
 
-*CabForward*
+CabForward
+==========
 Austin's Leading Ruby on Rails Shop
-www.cabforward.com
+http://www.cabforward.com
 
 Backbone Live Models and Collections
 
