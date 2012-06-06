@@ -40,11 +40,13 @@ Example
     messageList.die();
 
 
-    // You can then just follow normal Backbone code convention by binding to the Collection's or Model's events
+    // You can then just follow normal Backbone code convention by binding 
+    // to the Collection's or Model's events
     this.collection.bind("add", this.addNewMessage, this);
 
 
-    // That's it!!  Your LiveCollection will always be in sync with the server with only 1 line of extra code!
+    // That's it!!  
+    // Your LiveCollection will always be in sync with the server with only 1 line of extra code!
 
 
     // here's the code inside the LiveCollection, it uses convention over configuration to bind
