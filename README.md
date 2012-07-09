@@ -45,13 +45,15 @@ Example
     messageList.die();
 
 
-    // You can then just follow normal Backbone code convention by binding 
-    // to the Collection's or Model's events
-    this.collection.on("add", this.addNewMessage, this);
-
-
     // That's it!!  
     // Your LiveCollection will always be in sync with the server with only 1 line of extra code!
+
+
+    // To trigger an event from the server, use code like
+    Pusher["132472"].trigger("add_message", @message.to_json)
+
+    // which will be handled automatically in the LiveCollection code, and in turn trigger your event code
+    this.collection.on("add", this.addNewMessage, this);
 
 
     // here's the code inside the LiveCollection, it uses convention over configuration to bind
