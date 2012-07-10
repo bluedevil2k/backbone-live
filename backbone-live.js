@@ -263,6 +263,14 @@
       			delete this.pollTimeout;
 			}
 		},
+		
+		killAll : function() {
+			var c = this.die();
+			if (this.liveType === "pusher") {
+				this.pusher.unsubscribe(this.channelType + this.channel);
+			}
+			return c;
+		},
 
 		isLive : function() {
 			return this.isLive;
