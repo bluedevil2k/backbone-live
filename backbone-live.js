@@ -33,6 +33,7 @@
 			// default to polling if there's no arguments
 			options = options || {};
 			options.liveType = options.liveType || "poll";
+			options.parse = options.parse || false;
 
   			// if they've supplied a Pusher object or an existing pusherChannel, 
   			// set it up to use Pusher
@@ -72,7 +73,7 @@
 				}
 
 				this.pusherChannel.bind("add_" + this.eventType, function(model) {
-					_this.add(model);
+					_this.add(model, {parse: options.parse});
 				});
 
 				this.pusherChannel.bind("remove_" + this.eventType, function(model) {
