@@ -81,8 +81,10 @@
 				});
 
 				this.pusherChannel.bind("update_" + this.eventType, function(model) {
-					if (_this.get(model.id)) {
-						_this.get(model.id).set(model);
+					var modelIdAttribute = _this._idAttr;
+					var modelId = model[modelIdAttribute];
+					if (_this.get(modelId)) {
+						_this.get(modelId).set(model);
 					}
 				});
 
@@ -208,7 +210,8 @@
 				}
 
 				this.pusherChannel.bind("update_" + this.eventType, function(model) {
-					if (_this.get("id") === model.id) {
+					var modelId = model[_this.idAttribute];
+					if (_this.id === modelId) {
 						_this.set(model);
 					}
 				});
