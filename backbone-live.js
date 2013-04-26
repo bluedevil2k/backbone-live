@@ -81,11 +81,7 @@
 				});
 
 				this.pusherChannel.bind("update_" + this.eventType, function(model) {
-					var modelIdAttribute = _this._idAttr;
-					var modelId = model[modelIdAttribute];
-					if (_this.get(modelId)) {
-						_this.get(modelId).set(model);
-					}
+					_this.add(model, {merge: true, parse: options.parse});
 				});
 
 				this.pusherChannel.bind("reset_" + this.eventType, function(models) {
@@ -210,8 +206,7 @@
 				}
 
 				this.pusherChannel.bind("update_" + this.eventType, function(model) {
-					var modelId = model[_this.idAttribute];
-					if (_this.id === modelId) {
+					if (_this.get("id") === model.id) {
 						_this.set(model);
 					}
 				});
