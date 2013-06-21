@@ -33,7 +33,7 @@
 			// default to polling if there's no arguments
 			options = options || {};
 			options.liveType = options.liveType || "poll";
-			options.parse = options.parse || false;
+			options.parse = options.parse || true;
 
   			// if they've supplied a Pusher object or an existing pusherChannel, 
   			// set it up to use Pusher
