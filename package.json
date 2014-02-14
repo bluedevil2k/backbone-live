@@ -1,7 +1,7 @@
 {
-  "name": "backbone-live",
+  "name": "backbone-live-mixin",
   "version": "0.2.0",
-  "description": "Allows pusher channels to backbone objects",
+  "description": "Mixin for Backbone Models and Collections for interacting with Pusher channels",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,8 +13,8 @@
   "dependencies": {
     "backbone": "1.0.0"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Kevin Marx",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sportngin/backbone-live/issues"
   },
