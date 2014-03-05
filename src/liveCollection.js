@@ -51,22 +51,51 @@ module.exports = function() {
           this.pusherChannel = options.pusherChannel
         }
 
-        this.pusherChannel.bind("add_" + this.eventType, function(model) {
-          _this.add(model)
-        })
+        this.pusherChannel.bind("add_" + this.eventType, function(pushObj) {
+          var model = JSON.parse(pushObj.message)
 
-        this.pusherChannel.bind("remove_" + this.eventType, function(model) {
-          _this.remove(model)
-        })
+          if ('formatModel' in _this && typeof(_this.formatModel) == "function") {
+            model = _this.formatModel(model)[0]
+          }
 
-        this.pusherChannel.bind("update_" + this.eventType, function(model) {
-          if (_this.get(model.id)) {
-            _this.get(model.id).set(model)
+          var collection
+          if ('remoteAdd' in _this && typeof(_this.remoteAdd) == "function") {
+            collection = _this.remoteAdd(model, {silent: true})
+          } else {
+            collection = _this.add(model, {silent: true})
+          }
+
+          var newModel = collection.get(model.id)
+          if (newModel){
+            newModel.trigger('pusher:add', newModel, this)
           }
         })
 
-        this.pusherChannel.bind("reset_" + this.eventType, function(models) {
-          _this.reset(models)
+        this.pusherChannel.bind("remove_" + this.eventType, function(pushObj) {
+          var model = JSON.parse(pushObj.message)
+          _this.remove(model).trigger('pusher:remove', model, this)
+        })
+
+        this.pusherChannel.bind("update_" + this.eventType, function(pushObj) {
+          var model = JSON.parse(pushObj.message)
+
+          if ('formatModel' in _this && typeof(_this.formatModel) == "function") {
+            model = _this.formatModel(model)[0]
+          }
+
+          if (_this.get(model.id)) {
+            _this.get(model.id).set(model).trigger('pusher:update', model, this)
+          }
+        })
+
+        this.pusherChannel.bind("reset_" + this.eventType, function(pushObj) {
+          var model = JSON.parse(pushObj.message)
+
+          if ('formatModel' in _this && typeof(_this.pagedAdd) == "function") {
+            model = _this.formatModel(model)
+          }
+
+          _this.reset(model).trigger('pusher:reset', model, this)
         })
 
         this.isLive = true
