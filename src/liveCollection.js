@@ -58,11 +58,15 @@ module.exports = function() {
             model = _this.formatModel(model)[0]
           }
 
+          if (_this.get(model.id)){
+            return // model already exists
+          } else
+
           var collection
           if ('remoteAdd' in _this && typeof(_this.remoteAdd) == "function") {
             collection = _this.remoteAdd(model, {silent: true})
           } else {
-            collection = _this.add(model, {silent: true})
+            collection = _this.add(model)
           }
 
           var newModel = collection.get(model.id)
