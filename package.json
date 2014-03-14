@@ -1,0 +1,22 @@
+{
+  "name": "backbone-live",
+  "version": "0.2.0",
+  "description": "Mixin for Backbone Models and Collections for interacting with Pusher channels",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sportngin/backbone-live.git"
+  },
+  "dependencies": {
+    "backbone": "1.0.0"
+  },
+  "author": "Kevin Marx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sportngin/backbone-live/issues"
+  },
+  "homepage": "https://github.com/sportngin/backbone-live"
+}
