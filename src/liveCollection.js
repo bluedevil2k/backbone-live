@@ -87,7 +87,12 @@ module.exports = function() {
             model = _this.formatModel(model)[0]
           }
 
-          if (_this.get(model.id)) {
+          var newModel = _this.get(model.id)
+          if ( newModel) {
+            var local_update_at = newModel.attributes.updated_at
+            if (local_update_at && model.updated_at && local_update_at >= model.updated_at){
+              return //model is most recent version
+            }
             _this.get(model.id).set(model).trigger('pusher:update', model, this)
           }
         })
