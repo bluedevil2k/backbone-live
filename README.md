@@ -39,7 +39,7 @@ Example
 
     // make the collection "live" with the pusher object, your chosen channel, and an eventType that
     // will bind all possible events
-    messageList.live({pusher: pusher, channel: myChannel, eventType: "message"});
+    messageList.live({pusher: pusher, channelName: myChannel, eventType: "message"});
 
     // or turn it off
     messageList.die();
